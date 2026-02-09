@@ -215,27 +215,27 @@ function App() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Number of Defects</label>
-                  <input type="number" value={calcDefects} onChange={(e) => setCalcDefects(Number(e.target.value))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
+                  <input type="number" min="0" value={calcDefects} onChange={(e) => setCalcDefects(Math.max(0, Number(e.target.value)))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Total Units Produced</label>
-                  <input type="number" value={calcUnits} onChange={(e) => setCalcUnits(Number(e.target.value))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
+                  <input type="number" min="1" value={calcUnits} onChange={(e) => setCalcUnits(Math.max(1, Number(e.target.value)))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Opportunities Per Unit</label>
-                  <input type="number" value={calcOps} onChange={(e) => setCalcOps(Number(e.target.value))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
+                  <input type="number" min="1" value={calcOps} onChange={(e) => setCalcOps(Math.max(1, Number(e.target.value)))} className="w-full p-3 border rounded-xl bg-slate-50 font-bold text-slate-700" />
                 </div>
               </div>
 
               <div className="mt-8 p-6 bg-slate-900 rounded-2xl text-white flex justify-around items-center">
                 <div className="text-center">
                   <div className="text-[10px] uppercase font-bold text-slate-400">DPMO</div>
-                  <div className="text-2xl font-bold text-yellow-400">{dpmo.toLocaleString()}</div>
+                  <div className="text-2xl font-bold text-yellow-400">{dpmo.toLocaleString(undefined, { maximumFractionDigits: 2 })}</div>
                 </div>
                 <div className="w-px h-10 bg-slate-700"></div>
                 <div className="text-center">
                   <div className="text-[10px] uppercase font-bold text-slate-400">Sigma Level</div>
-                  <div className="text-3xl font-black text-blue-400">{sigma}σ</div>
+                  <div className="text-3xl font-black text-blue-400">{calcUnits > 0 ? sigma.toFixed(2) : "0.00"}σ</div>
                 </div>
               </div>
             </div>
