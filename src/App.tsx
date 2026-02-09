@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-// Import Content (Vite: ?raw imports file as string)
+// Import Content
 import WhiteIntro from './content/white/intro.md?raw';
 import WhiteHistory from './content/white/history.md?raw';
 import WhiteConcepts from './content/white/concepts.md?raw';
@@ -12,6 +12,14 @@ import YellowMeasure from './content/yellow/measure.md?raw';
 import YellowAnalyze from './content/yellow/analyze.md?raw';
 import YellowImprove from './content/yellow/improve.md?raw';
 import YellowControl from './content/yellow/control.md?raw';
+
+import GreenStats from './content/green/stats.md?raw';
+import GreenFmea from './content/green/fmea.md?raw';
+
+import BlackStats from './content/black/advanced_stats.md?raw';
+import BlackLeadership from './content/black/leadership.md?raw';
+
+import MbbStrategy from './content/mbb/strategy.md?raw';
 
 const Curriculum = {
   white: [
@@ -27,9 +35,17 @@ const Curriculum = {
     { id: 'improve', title: 'Improve Phase', content: YellowImprove },
     { id: 'control', title: 'Control Phase', content: YellowControl },
   ],
-  green: [],
-  black: [],
-  mbb: [],
+  green: [
+    { id: 'stats', title: 'Stats & Capability', content: GreenStats },
+    { id: 'fmea', title: 'Analyze & FMEA', content: GreenFmea },
+  ],
+  black: [
+    { id: 'adv_stats', title: 'Advanced Stats & DOE', content: BlackStats },
+    { id: 'leadership', title: 'Leadership & Change', content: BlackLeadership },
+  ],
+  mbb: [
+    { id: 'strategy', title: 'Enterprise Strategy', content: MbbStrategy },
+  ],
 };
 
 const Belts = [
@@ -44,18 +60,15 @@ function App() {
   const [currentBelt, setCurrentBelt] = useState('white');
   const [selectedLesson, setSelectedLesson] = useState<any>(null);
 
-  // Close lesson viewer
   const closeLesson = () => setSelectedLesson(null);
 
   return (
     <div className="min-h-screen flex flex-col relative bg-slate-50">
-      {/* Header */}
       <header className="bg-slate-900 text-white p-4 shadow-md z-20">
         <h1 className="text-xl font-bold tracking-tight">Six Sigma Sensei</h1>
         <p className="text-xs text-slate-400 uppercase tracking-widest">Road to Mastery</p>
       </header>
 
-      {/* Belt Navigation */}
       <nav className="flex overflow-x-auto p-4 gap-3 bg-white border-b sticky top-0 z-10 no-scrollbar shadow-sm">
         {Belts.map((belt) => (
           <button
@@ -72,7 +85,6 @@ function App() {
         ))}
       </nav>
 
-      {/* Lesson List (Dashboard) */}
       <main className="flex-1 p-6 max-w-2xl mx-auto w-full pb-20">
         <div className="bg-white rounded-2xl shadow-sm border p-6">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 capitalize border-b pb-4">
@@ -80,32 +92,25 @@ function App() {
           </h2>
           
           <div className="space-y-3">
-            {Curriculum[currentBelt as keyof typeof Curriculum]?.length > 0 ? (
-              Curriculum[currentBelt as keyof typeof Curriculum].map((lesson, index) => (
-                <div 
-                  key={lesson.id}
-                  onClick={() => setSelectedLesson(lesson)}
-                  className="flex items-center p-4 border rounded-xl hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer group active:scale-95"
-                >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    {index + 1}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-700 group-hover:text-blue-700">{lesson.title}</h3>
-                    <p className="text-xs text-slate-400 group-hover:text-blue-400">Tap to start lesson</p>
-                  </div>
+            {Curriculum[currentBelt as keyof typeof Curriculum]?.map((lesson, index) => (
+              <div 
+                key={lesson.id}
+                onClick={() => setSelectedLesson(lesson)}
+                className="flex items-center p-4 border rounded-xl hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer group active:scale-95"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  {index + 1}
                 </div>
-              ))
-            ) : (
-              <div className="text-center py-10 text-slate-400 italic">
-                Modules coming soon...
+                <div>
+                  <h3 className="font-semibold text-slate-700 group-hover:text-blue-700">{lesson.title}</h3>
+                  <p className="text-xs text-slate-400 group-hover:text-blue-400">Tap to start lesson</p>
+                </div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </main>
 
-      {/* Lesson Viewer (Modal Overlay) */}
       {selectedLesson && (
         <div className="fixed inset-0 z-50 bg-white flex flex-col animate-slide-up">
           <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-lg">
@@ -113,18 +118,15 @@ function App() {
               &larr; Back
             </button>
             <span className="font-bold truncate max-w-[200px]">{selectedLesson.title}</span>
-            <div className="w-8"></div> {/* Spacer */}
+            <div className="w-8"></div>
           </div>
           
-          <div className="flex-1 overflow-y-auto p-6 prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600">
+          <div className="flex-1 overflow-y-auto p-6 prose prose-slate max-w-none">
             <ReactMarkdown>{selectedLesson.content}</ReactMarkdown>
           </div>
 
           <div className="p-4 border-t bg-slate-50 flex justify-center">
-            <button 
-              onClick={closeLesson}
-              className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-colors w-full max-w-md active:scale-95"
-            >
+            <button onClick={closeLesson} className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg w-full max-w-md">
               Complete Lesson
             </button>
           </div>
