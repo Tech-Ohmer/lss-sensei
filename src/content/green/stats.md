@@ -1,19 +1,22 @@
-# Green Belt: Advanced DMAIC & Statistics
+# Green Belt: The Statistics of Success
 
-## The Green Belt Role
-As a Green Belt, you lead projects and provide data-driven insights. This level introduces the statistical power behind Six Sigma.
-
-## Basic Statistics for Green Belts
-- **Mean**: The average.
-- **Median**: The middle value.
-- **Standard Deviation (Sigma)**: The measure of variation.
-- **Normal Distribution**: The "Bell Curve" where most data points cluster around the mean.
+Now we enter the realm of the **Data Scientist**. As a Green Belt, you don't just find problems; you prove they exist using numbers.
 
 ## Process Capability (Cp & Cpk)
-- **Cp**: Potential capability (can the process fit within specs if centered?).
-- **Cpk**: Actual capability (how well is the process actually performing relative to the specs?).
-- **Target**: A Cpk of 1.33 or higher is generally considered "capable."
+Capability tells us if our process can meet the customer's expectations (The Voice of the Customer). 
+- If your **Cpk is < 1.33**, your process is "flirting with failure."
+- **Black Belt Tip**: Always look for the "Tail" of your distribution. That's where the defects hide.
 
-## Hypothesis Testing (Intro)
-Using data to prove if a change is statistically significant or just due to chance.
-- **P-Value**: If p < 0.05, the result is statistically significant (we reject the Null Hypothesis).
+## Hypothesis Testing: Guilt vs. Innocence
+Statistical tests (T-Tests, ANOVA) are like a courtroom. 
+- **Null Hypothesis (H0)**: "Everything is fine, nothing changed."
+- **Alternative Hypothesis (Ha)**: "We found a difference!"
+- If your **P-Value is < 0.05**, the evidence is strong enough to convict the variable!
+
+### 📊 Real-World Example: Insurance Claims
+A Green Belt noticed that claims from the "East Region" took 3 days longer. After a T-Test proved the difference was statistically significant, they discovered a "Motion" waste in how documents were scanned in that specific office.
+
+---
+## Sample Project Idea (Green Belt)
+**"API Latency Reduction"**
+Collect data on system response times. Use a Histogram to see the distribution. Perform a Correlation analysis between "Server Load" and "Latency" to identify the tipping point where performance degrades.

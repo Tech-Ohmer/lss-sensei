@@ -1,21 +1,22 @@
-# The Define Phase
+# The Define Phase: Crafting the Roadmap
 
-## Goal
-The goal of the Define phase is to articulate the business problem, goal, potential resources, project scope, and high-level project timeline.
+In the Yellow Belt, you stop being an observer and start being a **contributor**. The Define phase is where you set the "North Star" for your project.
 
-## Key Deliverable: The Project Charter
-A Project Charter is a contract between the project team and the champion/sponsor. It includes:
-1. **Problem Statement**: What is wrong, where, when, and how much? (Must be quantifiable).
-2. **Business Case**: Why is this project worth doing? What is the financial impact?
-3. **Goal Statement**: How much will we improve? By when?
-4. **Scope**: What is IN and OUT of the project?
-5. **Team Members**: Roles and responsibilities.
-6. **Timeline**: Key milestones.
+## The Project Charter: Your "Contract"
+A Six Sigma project without a charter is a ship without a compass. It defines the **Business Case**—the "So What?" of your work.
 
-## SIPOC Diagram
-A high-level process map that defines the scope of work:
-- **S**uppliers: Who provides inputs?
-- **I**nputs: What is needed for the process?
-- **P**rocess: High-level steps (5-7 steps).
-- **O**utputs: What is produced?
-- **C**ustomers: Who receives the outputs?
+### 🚀 Case Study: Surgery Wait Times
+**The Problem**: Patients at a city hospital waited 4 hours for registration.
+**The Define Phase**: 
+- **Scope**: Registration process from door-entry to bed-assignment.
+- **Goal**: Reduce wait time by 50% within 3 months.
+- **Financial Impact**: Estimated $200k savings in staff overtime and patient attrition.
+
+## SIPOC: The Bird's Eye View
+**S**uppliers | **I**nputs | **P**rocess | **O**utputs | **C**ustomers
+This tool ensures you don't miss any critical "hand-offs" between teams.
+
+---
+## Sample Project Idea (Yellow Belt)
+**"Meeting Efficiency Audit"**
+Define the waste in your team's weekly meetings. Use SIPOC to map the inputs (Agenda, Data) and Outputs (Decisions, Action Items). Your goal: Reduce "Motion" and "Waiting" waste.
