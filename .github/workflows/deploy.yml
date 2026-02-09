@@ -21,13 +21,12 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: Lean_Six_Sigma/app/package-lock.json
 
       - name: Install dependencies
-        run: cd Lean_Six_Sigma/app && npm install
+        run: npm install
 
       - name: Build
-        run: cd Lean_Six_Sigma/app && npm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -35,7 +34,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Lean_Six_Sigma/app/dist
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
